@@ -1,0 +1,75 @@
+@font-face {
+    font-family: Lato Black;
+    src:url(fonts/Lato-Black.ttf)
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+    
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid rgb(0, 47, 255);
+    padding: 10px;
+}
+
+h4 {
+    color:rgb(21, 6, 97);
+    font-size: 3rem;
+    margin: 0;
+    font-family: Lato Black;
+    
+}
+
+#add-button {
+    border: 1px solid rgb(250, 244, 244);
+    background-color: rgb(0, 47, 255);
+    color: white;
+    border-radius: 2%;
+    padding: 0.3rem;
+    box-shadow: rgb(124, 125, 128) 1px 2px 2px;
+
+}
+
+#dialog {
+    border: 2px solid black;
+    
+   
+}
+
+.book-wrapper {
+   
+    margin: 3em;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+
+}
+
+.book-card {
+    
+    border: 1px solid black;
+    border-left: 3px solid rgb(47, 20, 6);
+    border-radius: 3%;
+    height: 180px;
+    
+}
+
+h3 {
+    font-size: 1.2rem;
+    color: rgb(8, 25, 96);
+    text-align: center;
+}
+
+p {
+    color: rgb(82, 79, 123);
+    margin: 5px;
+}
