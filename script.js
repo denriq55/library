@@ -1,10 +1,12 @@
 
 const addButton = document.querySelector("#add-button");
-const dialogBox = document.querySelector("#dialog");
+const dialogBox = document.querySelector("dialog");
 const addToLibrary = document.querySelector("#submit");
 const bookWrapper  = document.querySelector(".book-wrapper");
-const closeDialog = document.querySelector("#close");
 const formInputs = document.querySelector("dialog form");
+const closeDialog = document.querySelector("#close");
+const form = document.querySelector("form")
+
 
 
 
@@ -16,17 +18,18 @@ addButton.addEventListener("click", () => {
     dialogBox.showModal();
     })
 
-closeDialog.addEventListener("click", () => {
-    dialogBox.close();
-    console.log('close utton clicked');
-    })
+
 
 addToLibrary.addEventListener("click", (e) => {
     e.preventDefault();
     addBookToLibrary();
      })
 
-
+     closeDialog.addEventListener("click", (e) => {
+        dialogBox.close();
+        
+        
+        })
    
 
 function Book(title, author, pages, genre, status) {
@@ -90,16 +93,18 @@ function showBook() {
     /* remove book */
         
     const removeButton = document.createElement("button");
-    removeButton.classList.add("remove-button");
-    removeButton.innerHTML = "Remove Book";
+    removeButton.classList.add("remove-button")
+    removeButton.innerHTML = 'Remove book';
     removeButton.setAttribute("data-index", index);
     bookCard.appendChild(removeButton);
+    
     
 
     removeButton.addEventListener("click", (e) => {
         const index = e.target.getAttribute('data-index');
         myLibrary.splice(index,1);
         e.target.parentElement.remove();
+        console.log("button clicked");
         
         });
 

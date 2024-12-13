@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
     <script src="script.js" defer></script>
 </head>
 
@@ -19,6 +20,11 @@
         <div class ="book-wrapper"></div>
         <dialog id="dialog"> 
             <form method="dialog">
+                <button type="button" id="close"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                    <path d="M64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l320 0c35.3 0 64-28.7 64-64l0-320c0-35.3-28.7-64-64-64L64 32zm79 
+                    143c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 
+                    9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 
+                    0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"/></svg></button>
                
                 <label>
                     Title:
@@ -48,18 +54,19 @@
                 </label>
            
 
-                
+                <label>
                     Status:
+                
                     <div>
                     <input type="radio" id="read" name="status" value="read" checked/>
                     <label>read</label>
                     <input type="radio" id="not-read" name="status" value="not read yet"/>
                     <label>not read yet</label>
-                </div>
-                
+                    </div>
+                </label>
 
                 <button type="submit" id="submit">Add to Library</button>
-                <button id="close">Go to Library</button>
+                
                 
 
             </form>
