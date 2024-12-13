@@ -19,39 +19,50 @@
         <div class ="book-wrapper"></div>
         <dialog id="dialog"> 
             <form method="dialog">
+               
                 <label>
                     Title:
                     <input type="text" id="title" name="title" value="">
                 </label>
+           
+
+      
 
                 <label>
                     Author:
                     <input type="text" id="author" name="author" value="">
                 </label>
+           
 
+           
                 <label>
                     Genre:
                     <input type="text" id="genre" name="genre" value="">
                 </label>
+           
 
+            
                 <label>
                     Pages:
                     <input type="number" id="pages" name="pages" value="">
                 </label>
+           
 
-                <legend>
+                
                     Status:
-                    <input type="radio" id="read" name="status" value="read"/>
+                    <div>
+                    <input type="radio" id="read" name="status" value="read" checked/>
                     <label>read</label>
-                    <input type="radio" id="not-read" name="status" value="not-read"/>
+                    <input type="radio" id="not-read" name="status" value="not read yet"/>
                     <label>not read yet</label>
-                    
-                </legend>
+                </div>
+                
 
                 <button type="submit" id="submit">Add to Library</button>
+                <button type="reset" id="close">Go to Library</button>
 
             </form>
-        </dialog>
+        </dialog> 
 
     
     <main>

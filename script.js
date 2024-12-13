@@ -1,9 +1,11 @@
 
 const addButton = document.querySelector("#add-button");
 const dialogBox = document.querySelector("#dialog");
-const removeBook = document.querySelector("#remove");
 const addToLibrary = document.querySelector("#submit");
 const bookWrapper  = document.querySelector(".book-wrapper");
+const closeDialog = document.querySelector("#close");
+const formInputs = document.querySelector("dialog form");
+
 
 
 
@@ -18,22 +20,20 @@ addButton.addEventListener("click", () => {
 addToLibrary.addEventListener("click", (e) => {
     e.preventDefault();
     addBookToLibrary();
-    
-   
+     })
+
+closeDialog.addEventListener("click", () => {
+    dialogBox.close();
     })
-    
    
-    
 
 function Book(title, author, pages, genre, status) {
     this.title = title; 
     this.author = author; 
     this.pages = pages;
     this.genre = genre;
+    this.status = status;
 }
-
-
-
 
 
 
@@ -43,20 +43,23 @@ function addBookToLibrary() {
     let author = document.querySelector("#author").value;
     let pages = document.querySelector("#pages").value;
     let genre = document.querySelector("#genre").value;
-    const newbook = new Book(title, author, pages, genre);
+    let status = document.querySelector('input[name="status"]:checked').value;
+    const newbook = new Book(title, author, pages, genre, status);
     myLibrary.push(newbook);
 
    
     showBook();
+
+    formInputs.reset();
    
 }
 
 function showBook() {
     bookWrapper.innerHTML = "";
-    myLibrary.forEach((Book) => {
+    myLibrary.forEach((Book, index) => {
     const bookCard = document.createElement("div");
-    bookCard.classList.add("book-card")
-    bookWrapper.appendChild(bookCard)
+    bookCard.classList.add("book-card");
+    bookWrapper.appendChild(bookCard);
     
     /* title style */
     const titleElement = document.createElement("h3"); 
@@ -75,8 +78,38 @@ function showBook() {
     const genreElement = document.createElement("p"); 
     genreElement.textContent = `Genre: ${Book.genre}`;
     bookCard.appendChild(genreElement);
-    
+
+    const statusElement = document.createElement("p");
+    statusElement.textContent = `Status: ${Book.status}`;
+    bookCard.appendChild(statusElement);
+
+    /* remove */
+        
+    const removeButton = document.createElement("button");
+    removeButton.classList.add("remove-button");
+    removeButton.innerHTML = "Remove Book"
+    bookCard.appendChild(removeButton);
+
+    removeButton.addEventListener("click", () => {
+        removeBook(index);
+       
     })
-}
+
+    })
+    function removeBook(index) {
+        const targetBook = myLibrary[index]; 
+        if (targetBook) {
+            myLibrary.splice(index,1);
+            targetCard.innerHTML = "";
+        }
+    
+       
+    }
+    
+
+} 
+    
+
+
 
 
