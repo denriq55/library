@@ -16,15 +16,17 @@ addButton.addEventListener("click", () => {
     dialogBox.showModal();
     })
 
+closeDialog.addEventListener("click", () => {
+    dialogBox.close();
+    console.log('close utton clicked');
+    })
 
 addToLibrary.addEventListener("click", (e) => {
     e.preventDefault();
     addBookToLibrary();
      })
 
-closeDialog.addEventListener("click", () => {
-    dialogBox.close();
-    })
+
    
 
 function Book(title, author, pages, genre, status) {
@@ -37,6 +39,7 @@ function Book(title, author, pages, genre, status) {
 
 
 
+
 function addBookToLibrary() {
     
     let title = document.querySelector("#title").value;
@@ -44,6 +47,7 @@ function addBookToLibrary() {
     let pages = document.querySelector("#pages").value;
     let genre = document.querySelector("#genre").value;
     let status = document.querySelector('input[name="status"]:checked').value;
+
     const newbook = new Book(title, author, pages, genre, status);
     myLibrary.push(newbook);
 
@@ -83,32 +87,27 @@ function showBook() {
     statusElement.textContent = `Status: ${Book.status}`;
     bookCard.appendChild(statusElement);
 
-    /* remove */
+    /* remove book */
         
     const removeButton = document.createElement("button");
     removeButton.classList.add("remove-button");
-    removeButton.innerHTML = "Remove Book"
+    removeButton.innerHTML = "Remove Book";
+    removeButton.setAttribute("data-index", index);
     bookCard.appendChild(removeButton);
+    
 
-    removeButton.addEventListener("click", () => {
-        removeBook(index);
-       
+    removeButton.addEventListener("click", (e) => {
+        const index = e.target.getAttribute('data-index');
+        myLibrary.splice(index,1);
+        e.target.parentElement.remove();
+        
+        });
+
+   
+
+ 
     })
-
-    })
-    function removeBook(index) {
-        const targetBook = myLibrary[index]; 
-        if (targetBook) {
-            myLibrary.splice(index,1);
-            targetCard.innerHTML = "";
-        }
-    
-       
-    }
-    
-
-} 
-    
+};
 
 
 
