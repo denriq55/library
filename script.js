@@ -12,6 +12,7 @@ const form = document.querySelector("form")
 
 
 
+
 const myLibrary = [];
 
 addButton.addEventListener("click", () => {
@@ -93,17 +94,21 @@ function showBook() {
     /* remove book */
         
     const removeButton = document.createElement("button");
-    removeButton.classList.add("remove-button")
-    removeButton.innerHTML = 'Remove book';
+    removeButton.classList.add("remove-button");
+    const svg = document.createElement("img");
+    svg.src = "icons/trash-can-regular.svg";
+
     removeButton.setAttribute("data-index", index);
+    removeButton.appendChild(svg);
     bookCard.appendChild(removeButton);
+
     
     
 
     removeButton.addEventListener("click", (e) => {
         const index = e.target.getAttribute('data-index');
         myLibrary.splice(index,1);
-        e.target.parentElement.remove();
+        bookCard.remove();
         console.log("button clicked");
         
         });

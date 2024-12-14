@@ -3,23 +3,32 @@
     src:url(fonts/Lato-Black.ttf)
 }
 
+@font-face {
+    font-family: Fira Sans;
+    src: url(fonts/Fira_Sans/FiraSans-Light.ttf);
+}
+
 body, html {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Fira Sans,system-ui, -apple-system, BlinkMacSystemFont, 
+    'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 
+    'Helvetica Neue', sans-serif;
     
     
 }
 
+
+
 header {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
     gap: 10px;
     border-bottom: 1px solid rgb(0, 47, 255);
-    padding: 10px;
     background-color: rgb(238, 238, 239);
+    align-items: center; 
+    padding: 15px 70px 15px 70px;
 }
 
 body {
@@ -31,28 +40,34 @@ body {
 
 
 
+
 h4 {
     color:rgb(21, 6, 97);
     font-size: 3rem;
     margin: 0;
-    font-family: Lato Black;
+    font-family: Lato Black, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     
 }
 
 #add-button {
-    border: 1px solid rgb(250, 244, 244);
+    border: 1px solid rgb(188, 192, 209);
     background-color: rgb(0, 47, 255);
     color: white;
-    border-radius: 2%;
-    padding: 0.3rem;
-    box-shadow: rgb(124, 125, 128) 1px 2px 2px;
+    border-radius: 5%;
+    padding: 0.2rem;
+    box-shadow: #7c7d80 1px 2px 2px;
+    width: 130px;
+    height: 2rem;
+    font-family: Lato Black, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
 }
 
 
 dialog {
-    background-color:rgb(232, 234, 236);
+    background-color:rgb(214, 218, 222);
     border-radius: 5px;
+    border-color: #2d76b5;
+    box-shadow: #9c9da0 1px 2px 2px;
 }
 
 dialog form {
@@ -63,10 +78,23 @@ dialog form {
     padding-bottom: 0.5rem;
 }
 
+#submit {
+    font-family: Lato Black, system-ui, -apple-system, BlinkMacSystemFont, 
+    'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 
+    'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #0365ba;
+    border: 1px solid #2d76b5; 
+    box-shadow: #9195a5 1px 2px 2px;
+    border-radius: 5px;
+    padding: 0.2rem;
+    width: 130px;
+    margin: auto;
+    font-size: 0.9rem;
+
+}
+
 .book-wrapper {
    position: relative;
-  
-  z-index: 10; 
     margin: 3em;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -77,14 +105,14 @@ dialog form {
 .book-card {
     background-color:rgb(248, 248, 247);
     border: 1px solid black;
-    border-left: 9px groove rgb(3, 101, 186);
+    border-left: 9px groove #0365ba;
     border-radius: 3%;
-    height: auto;
-    padding: 1rem;
+    
+    padding: 0.3rem 1rem 2rem 1rem;
+   
     position: relative;
-    
-    
-    
+    display: flex;
+    flex-direction: column;  
    
 }
 
@@ -93,12 +121,12 @@ h3 {
     font-size: 1.2rem;
     color: rgb(8, 25, 96);
     text-align: left;
-    margin: auto;
+    
 }
 
 p {
-    color: rgb(82, 79, 123);
-    line-height: 0.4rem;
+    color: rgb(17, 13, 67);
+    margin: 0;
     
     
 }
@@ -112,16 +140,20 @@ p {
     left: 90%;
     margin: 0;
     padding: 0;
+    box-shadow: #9c9da0 1px 2px 2px;
+    height: 0;
     
 }
 
 .remove-button {
     border: none;
     width: 1rem;
- 
     margin: 0;
     padding: 0;
-    left: 90%;
-    bottom: 0.5rem;
+    position: absolute;
+    bottom: 9px;
+    right: 9px;
+   
+    
     
 }
