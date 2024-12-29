@@ -10,52 +10,66 @@ const form = document.querySelector("form")
 
 
 
-
-
-
-const myLibrary = [];
-
 addButton.addEventListener("click", () => {
     dialogBox.showModal();
     })
 
-
-
 addToLibrary.addEventListener("click", (e) => {
     e.preventDefault();
-    addBookToLibrary();
-     })
+    grabValues();
+    })
 
-     closeDialog.addEventListener("click", (e) => {
-        dialogBox.close();
-        
-        
-        })
+closeDialog.addEventListener("click", (e) => {
+dialogBox.close();
+    })
    
 
-function Book(title, author, pages, genre, status) {
+class Book {
+
+    constructor(title, author, pages, genre, state) {
     this.title = title; 
     this.author = author; 
     this.pages = pages;
     this.genre = genre;
-    this.status = status;
+    this.state = state; 
+    }
+
+   
 }
 
 
 
+class Library {
+    constructor() {
+        this.books = []
+        
+    }
 
-function addBookToLibrary() {
+    addToLibrary(book) {
+        this.books.push(book)
+    }
+
+    removeBook(e) {
+        const index = e.target.getAttribute("data-index")
+        this.books.splice(index, 1);
+    }
+
+
+}
+
+const myLibrary = new Library();
+
+function grabValues() {
     
     let title = document.querySelector("#title").value;
     let author = document.querySelector("#author").value;
     let pages = document.querySelector("#pages").value;
     let genre = document.querySelector("#genre").value;
-    let status = document.querySelector('input[name="status"]:checked').value;
+    let state = document.querySelector('input[name="status"]:checked').value;
 
-    const newbook = new Book(title, author, pages, genre, status);
-    myLibrary.push(newbook);
+    const newbook = new Book(title, author, pages, genre, state);
+    myLibrary.addToLibrary(newbook)
 
-   
     showBook();
 
     formInputs.reset();
@@ -64,31 +78,31 @@ function addBookToLibrary() {
 
 function showBook() {
     bookWrapper.innerHTML = "";
-    myLibrary.forEach((Book, index) => {
+    myLibrary.books.forEach((book, index) => {
     const bookCard = document.createElement("div");
     bookCard.classList.add("book-card");
     bookWrapper.appendChild(bookCard);
     
     /* title style */
     const titleElement = document.createElement("h3"); 
-    titleElement.textContent = Book.title;
+    titleElement.textContent = book.title;
     bookCard.appendChild(titleElement);
    
     /* p styles */
     const authorElement = document.createElement("p"); 
-    authorElement.textContent = `Author: ${Book.author}`;
+    authorElement.textContent = `Author: ${book.author}`;
     bookCard.appendChild(authorElement);
 
     const pagesElement = document.createElement("p"); 
-    pagesElement.textContent = ` Pages: ${Book.pages}`;
+    pagesElement.textContent = ` Pages: ${book.pages}`;
     bookCard.appendChild(pagesElement);
 
     const genreElement = document.createElement("p"); 
-    genreElement.textContent = `Genre: ${Book.genre}`;
+    genreElement.textContent = `Genre: ${book.genre}`;
     bookCard.appendChild(genreElement);
 
     const statusElement = document.createElement("p");
-    statusElement.textContent = `Status: ${Book.status}`;
+    statusElement.textContent = `Status: ${book.state}`;
     bookCard.appendChild(statusElement);
 
     /* remove book */
@@ -103,22 +117,10 @@ function showBook() {
     bookCard.appendChild(removeButton);
 
     
-    
-
     removeButton.addEventListener("click", (e) => {
-        const index = e.target.getAttribute('data-index');
-        myLibrary.splice(index,1);
         bookCard.remove();
-        console.log("button clicked");
-        
-        });
-
-   
-
- 
+        myLibrary.removeBook(e)});
     })
-};
-
-
+}
 
 
